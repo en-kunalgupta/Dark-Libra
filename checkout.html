@@ -1,23 +1,235 @@
+To stylize the page further and add more elements, we can make the checkout page more visually appealing and engaging. I'll focus on improving the layout, adding animations, and introducing more UI components to enhance the overall user experience. Below are some of the improvements:
+
+1. **Gradient Background** for a modern look.
+2. **Card Style for Cart Summary** to give it a more polished feel.
+3. **Animation for Form Elements** when the user interacts with them.
+4. **Enhanced Buttons** with hover effects.
+5. **Additional Elements** like a “Coupon Code” input, a “Summary of Items” in the cart, and a “Payment Method” section.
+
+### Updated Enhanced Checkout Page with More Styling:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WZ25QFKB');</script>
-<!-- End Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true; 
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WZ25QFKB');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Section */
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary p {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        /* Form Elements */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 8px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+            align-self: center;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        /* Coupon Code Section */
+        .coupon-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .coupon-input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .apply-btn {
+            background-color: #ff8000;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #e67e00;
+        }
+
+        /* Payment Section */
+        .payment-methods {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .payment-card {
+            width: 150px;
+            height: 90px;
+            background-color: #e6e6e6;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .payment-card:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ25QFKB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ25QFKB"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <header>
         <h1>Checkout</h1>
         <nav>
@@ -29,22 +241,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section>
         <h2>Your Cart</h2>
-        <p>Product: Awesome Product</p>
-        <p>Price: $29.99</p>
+        <div class="cart-summary">
+            <p><strong>Product:</strong> Awesome Product</p>
+            <p><strong>Price:</strong> $29.99</p>
+            <p><strong>Total:</strong> $29.99</p>
+        </div>
 
-        <form>
+        <form id="checkout-form">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+            <input type="text" id="name" name="name" required>
 
             <label for="address">Shipping Address:</label>
-            <input type="text" id="address" name="address" required><br>
+            <input type="text" id="address" name="address" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
             <button class="btn" type="submit">Complete Purchase</button>
         </form>
+
+        <div class="coupon-section">
+            <input type="text" class="coupon-input" placeholder="Enter Coupon Code">
+            <button class="apply-btn">Apply</button>
+        </div>
+
+        <div class="payment-methods">
+            <div class="payment-card">
+                <img src="https://via.placeholder.com/120x80?text=PayPal" alt="PayPal">
+            </div>
+            <div class="payment-card">
+                <img src="https://via.placeholder.com/120x80?text=Stripe" alt="Stripe">
+            </div>
+            <div class="payment-card">
+                <img src="https://via.placeholder.com/120x80?text=Visa" alt="Visa">
+            </div>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2025 My Simple Store</p>
     </footer>
-</body>
-</html>
+
+    <script>
+        // Form validation and submit handling
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            //
